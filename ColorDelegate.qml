@@ -7,8 +7,8 @@ Rectangle {
 
 //    width: size
 //    height: size
-    width: GridView.view?.cellWidth*0.9 ?? ListView.view?.width ?? 80;
-    height: GridView.view?.cellHeight*0.9 ?? ListView.view?.height?? 80;
+    width: GridView.view?.cellWidth*1.0 ?? ListView.view?.width ?? 80;
+    height: GridView.view?.cellHeight*1.0 ?? ListView.view?.height?? 80;
     color: model.colorName
 
     MouseArea {

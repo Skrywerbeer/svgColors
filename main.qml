@@ -28,13 +28,13 @@ Window {
             Layout.minimumHeight: 40;
             Layout.preferredHeight: 40;
             Layout.maximumHeight: 40;
-            Layout.alignment: Qt.AlignHCenter;
+            Layout.alignment: Qt.AlignCenter;
 
             SortSelector {
                 Layout.minimumWidth: height*3
                 Layout.preferredWidth: root.width/5;
                 Layout.maximumWidth: 200;
-                Layout.fillHeight: true;
+                Layout.preferredHeight: 30;
                 Layout.alignment: Qt.AlignHCenter;
                 color: "tan";
                 label: "Aa";
@@ -46,7 +46,7 @@ Window {
                 Layout.minimumWidth: height*3
                 Layout.preferredWidth: root.width/5;
                 Layout.maximumWidth: 200;
-                Layout.fillHeight: true;
+                Layout.preferredHeight: 30;
                 Layout.alignment: Qt.AlignHCenter;
                 color: "red";
                 label: "R";
@@ -58,7 +58,7 @@ Window {
                 Layout.minimumWidth: height*3
                 Layout.preferredWidth: root.width/5;
                 Layout.maximumWidth: 200;
-                Layout.fillHeight: true;
+                Layout.preferredHeight: 30;
                 Layout.alignment: Qt.AlignHCenter;
 
                 color: "green";
@@ -71,7 +71,7 @@ Window {
                 Layout.minimumWidth: height*3
                 Layout.preferredWidth: root.width/5;
                 Layout.maximumWidth: 200;
-                Layout.fillHeight: true;
+                Layout.preferredHeight: 30;
                 Layout.alignment: Qt.AlignHCenter;
 
                 color: "blue";
@@ -88,14 +88,22 @@ Window {
             Layout.alignment: Qt.AlignCenter;
 
             clip: true;
-            leftMargin: 10
-            rightMargin: 10
-            topMargin: 10
-            bottomMargin: 10
-            cellWidth: 80
-            cellHeight: cellWidth;
+//            leftMargin: 10
+//            rightMargin: 10
+//            topMargin: 10
+//            bottomMargin: 10
+            cellWidth: 80 + ((width/80 - Math.trunc(width/80))*80)/Math.trunc(width/80);
+            cellHeight: cellWidth*1.2;
             model: ColorModel {id: colorModel;}
             delegate: ColorDelegate {}
+
+            move: Transition {
+                NumberAnimation {
+                    properties: "x, y";
+                    duration: 800;
+                    easing.type: Easing.OutQuart
+                }
+            }
         }
     }
 }
